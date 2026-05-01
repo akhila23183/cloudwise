@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+}
+
+.main {
+  flex: 1;
+  background: #f8fafc;
+  color     :cornflowerblue;
+}
+
+.content {
+  padding: 30px;
+}
