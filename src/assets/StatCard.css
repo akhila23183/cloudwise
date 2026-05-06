@@ -1,0 +1,165 @@
+dashboard.css body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+}
+
+.dashboard {
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Stats */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-title {
+    color: #777;
+    font-size: 14px;
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.stat-icon {
+    font-size: 22px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 20px;
+}
+
+.tabs button {
+    background: none;
+    border: none;
+    padding: 10px 0;
+    cursor: pointer;
+    color: #777;
+}
+
+.tabs .active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+/* Instance Card */
+.instance-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.instance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sub-text {
+    color: #777;
+    font-size: 14px;
+}
+
+.status {
+    background: #e6f7ec;
+    color: green;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* Progress */
+.progress-section {
+    margin-top: 15px;
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.progress-bar {
+    background: #eee;
+    height: 8px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.progress-fill {
+    background: green;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* Info Grid */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.info-grid p {
+    color: #777;
+    font-size: 13px;
+    margin: 0;
+}
+
+.info-grid h4 {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+.green {
+    color: green;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}

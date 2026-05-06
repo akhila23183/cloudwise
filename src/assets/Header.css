@@ -1,0 +1,96 @@
+/* HEADER */
+.header {
+    height: 64px;
+    background: linear-gradient(135deg, #2563eb, #4f46e5);
+    /* 🔥 main highlight */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    color: #fff;
+}
+
+/* LEFT TITLE */
+.header-left h2 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* RIGHT */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+/* 🔔 NOTIFICATION */
+.notification {
+    position: relative;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.notification:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* badge */
+.notification span {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 10px;
+    padding: 3px 6px;
+    border-radius: 50%;
+}
+
+/* USER BOX */
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 12px;
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    transition: 0.3s;
+}
+
+.user:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* AVATAR */
+.avatar {
+    width: 36px;
+    height: 36px;
+    background: #ffffff;
+    color: #2563eb;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* TEXT */
+.user-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.role {
+    font-size: 11px;
+    opacity: 0.8;
+}
