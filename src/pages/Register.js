@@ -1,84 +1,144 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "../assets/Register.css";
+import { FaCloud, FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [form, setForm] = useState({
     email: "",
-    tel: "",
     password: "",
-    confirmPassword: "",
+    confirm_password: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  // HANDLE INPUT
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
 
-    if (form.password !== form.confirmPassword) {
+    if (form.password !== form.confirm_password) {
       alert("Passwords do not match");
       return;
     }
 
-    alert("Registered Successfully");
+    const payload = {
+      email: form.email,
+      password: form.password,
+      confirm_password: form.confirm_password,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/register/",
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+
+      alert(response.data.message || "Registration Successful");
+
+      setForm({
+        email: "",
+        password: "",
+        confirm_password: "",
+      });
+    } catch (error) {
+      console.error(error);
+
+      console.log(error.response?.data);
+
+      if (error.response) {
+        alert(JSON.stringify(error.response.data));
+      } else {
+        alert("Server not responding");
+      }
+    }
   };
 
   return (
     <div className="register-wrapper">
+      {/* CARD */}
       <div className="register-box">
+        {/* LOGO */}
+        <div className="cloud-logo">
+          <FaCloud />
+        </div>
+
+        {/* TITLE */}
+        <h2 className="title">Create CloudWise Account</h2>
+
+        <p className="subtitle">
+          Manage and optimize your cloud infrastructure efficiently.
+        </p>
+
+        {/* FORM */}
         <form className="register-form" onSubmit={submit}>
-          <h2 className="title">Please Create Account</h2>
-
+          {/* EMAIL */}
           <div className="input-group">
-            <label>Email</label>
-
             <input
               type="email"
               name="email"
+              placeholder="Enter Your Email"
               value={form.email}
               onChange={handleChange}
               required
             />
           </div>
 
-          <div className="input-group">
-            <label>Mobile Number</label>
-
+          <div className="input-group password-group">
             <input
-              type="tel"
-              name="tel"
-              value={form.tel}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="input-group">
-            <label>Password</label>
-
-            <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
+              placeholder="Enter Password"
               value={form.password}
               onChange={handleChange}
               required
             />
+
+            <span onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
           </div>
 
-          <div className="input-group">
-            <label>Confirm Password</label>
+         
 
+          {/* CONFIRM PASSWORD */}
+          <div className="input-group password-group">
             <input
-              type="password"
-              name="confirmPassword"
-              value={form.confirmPassword}
+              type={showPassword ? "text" : "password"}
+              name="confirm_password"
+              placeholder="Confirm Password"
+              value={form.confirm_password}
               onChange={handleChange}
               required
             />
+            <span onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? <FaEyeSlash/> : <FaEye/>}
+            </span>
           </div>
 
-          <button className="register-btn">Register</button>
+          {/* BUTTON */}
+          <button className="register-btn" type="submit">
+            Create Account
+          </button>
+
+          {/* LOGIN */}
+          <p className="register-para">
+            Already have an account? <Link to="/login">Login Here</Link>
+          </p>
         </form>
       </div>
     </div>

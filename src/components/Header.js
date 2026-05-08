@@ -1,27 +1,32 @@
 import React from "react";
 import "../assets/Header.css";
-import { FaBell } from "react-icons/fa";
+import { FaCloud } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <div className="header">
       {/* LEFT */}
       <div className="header-left">
-        <h2>Cloud Cost Optimisation Platform</h2>
+        <h2><FaCloud/>Cloud Cost Optimisation Platform</h2>
       </div>
 
       {/* RIGHT */}
       <div className="header-right">
-        <div className="notification">
-          <FaBell />
-          <span>3</span>
-        </div>
+        
 
         <div className="user">
-          <div className="avatar">IA</div>
           <div className="user-text">
-            <span className="name">IICL Admin</span>
-            <span className="role">Admin</span>
+            <Link
+              to="/login"
+              style={{
+                textDecoration: "none",
+                color: "white",
+                fontWeight: "600",
+              }}
+            >
+              <span className="name">Login</span>
+            </Link>
           </div>
         </div>
       </div>

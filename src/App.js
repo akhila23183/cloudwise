@@ -9,11 +9,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Optimization from "./components/Optimization";
 import Recommendations from "./components/Recommendations";
+import HomePage from "./components/HomePage";
 
 function AppWrapper() {
   const location = useLocation();
 
-  // ekkada header/sidebar hide cheyyalo
   const hideLayout =
     location.pathname === "/login" || location.pathname === "/register";
 
@@ -40,8 +40,9 @@ function AppWrapper() {
               <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/statcard" element={<StatCard />} />
-                <Route path="/optimization" element={<Optimization/>}/>
-                <Route path="/recommendations" element={<Recommendations/>}/>
+                <Route path="/optimization" element={<Optimization />} />
+                <Route path="/recommendations" element={<Recommendations />} />
+                <Route path="/homepage" element={<HomePage />} />
               </Routes>
             </div>
           </div>
@@ -60,36 +61,7 @@ function AppWrapper() {
 }
 
 function App() {
-  return (
-      <AppWrapper />
-  );
+  return <AppWrapper />;
 }
 
 export default App;
-
-// import React from "react";
-// import Dashboard from "./components/Dashboard";
-// import { Routes, Route } from "react-router-dom";
-// import Login from "./pages/Login";
-// import Register from "./pages/Register";
-// import StatCard from "./components/StatCard";
-// import Sidebar from "./components/Sidebar";
-// function App() {
-//   return (
-//     <div style={{ display: "flex" }}>
-//       <Sidebar />
-
-//       <div style={{ flex: 1 }}>
-//         <Routes>
-//           <Route path="/login" element={<Login />} />
-//           <Route path="/" element={<Dashboard />} />
-//           <Route path="/register" element={<Register />} />
-//           <Route path="/dashboard" element={<Dashboard />} />
-//           <Route path="/statcard" element={<StatCard/>}/>
-//         </Routes>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default App;

@@ -1,0 +1,126 @@
+/* SIDEBAR */
+.sidebar {
+    width: 270px;
+    height: 100vh;
+    /* ⭐ IMPORTANT */
+    top: 0;
+    left: 0;
+    padding: 22px 18px;
+    background-color: #fff;
+    color: #000;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+    /* sidebar scroll separate */
+    z-index: 1000;
+}
+
+/* LOGO */
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo-icon {
+    background: linear-gradient(135deg, #2563eb, #06b6d4);
+    padding: 12px;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.logo-icon svg {
+    font-size: 22px;
+    color: #000;
+}
+
+.logo-text h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+}
+
+.logo-text span {
+    font-size: 12px;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+/* MENU */
+.menu-item {
+    padding: 13px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    cursor: pointer;
+    border-radius: 14px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background: #2563eb;
+    color: #fff;
+}
+
+.menu-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* SUB MENU */
+.submenu {
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 10px;
+}
+
+
+.active-menu {
+    background: #2563eb;
+    color: #fff !important;
+}
+
+/* ICON COLORS */
+.blue-icon {
+    color: #38bdf8;
+}
+
+.yellow-icon {
+    color: #facc15;
+}
+
+.green-icon {
+    color: #22c55e;
+}
+
+.orange-icon {
+    color: #f59e0b;
+}
+
+.purple-icon {
+    color: #a78bfa;
+}
+
+.alert-icon {
+    color: #f97316;
+}
+
+/* SCROLLBAR */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
