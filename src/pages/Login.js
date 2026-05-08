@@ -61,7 +61,7 @@ const Login = () => {
           </div>
 
           {/* TITLE */}
-          <h2 className="title">Welcome Back 👋</h2>
+          <h2 className="title">Welcome to Cloud Cost Optimization Services</h2>
 
           <p className="subtitle">Login to your CloudWise account</p>
 

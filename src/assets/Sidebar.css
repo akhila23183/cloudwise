@@ -1,7 +1,12 @@
 /* SIDEBAR */
 .sidebar {
-    width: 270px;
+    width: 260px;
     height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: hidden;
+    flex-shrink: 0;
+
     /* ⭐ IMPORTANT */
     top: 0;
     left: 0;
@@ -79,7 +84,7 @@
 /* SUB MENU */
 .submenu {
     margin-left: 12px;
-    padding-left: 12px;
+    padding-left: 15px;
     border-left: 1px solid rgba(255, 255, 255, 0.08);
     margin-bottom: 10px;
 }

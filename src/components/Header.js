@@ -18,14 +18,14 @@ function Header() {
         <div className="user">
           <div className="user-text">
             <Link
-              to="/login"
+              to="/"
               style={{
                 textDecoration: "none",
                 color: "white",
                 fontWeight: "600",
               }}
             >
-              <span className="name">Login</span>
+              <span className="name">Logout</span>
             </Link>
           </div>
         </div>

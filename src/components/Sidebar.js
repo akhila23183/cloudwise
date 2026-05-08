@@ -13,7 +13,7 @@ import {
   FaFileAlt,
   FaBell,
 } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import "../assets/Sidebar.css";
 
 function Sidebar() {
@@ -21,7 +21,6 @@ function Sidebar() {
   const [resourceOpen, setResourceOpen] = useState(false);
   const [govOpen, setGovOpen] = useState(false);
   const [finopsOpen, setFinopsOpen] = useState(false);
-
 
   return (
     <>
@@ -40,10 +39,12 @@ function Sidebar() {
 
         {/* DASHBOARD */}
         <div className="menu-item">
-          <div className="menu-left">
-            <FaChartBar className="blue-icon" />
-            IICL Dashboard
-          </div>
+          <NavLink to="/homepage" style={{ textDecoration: "none" }}>
+            <div className="menu-left">
+              <FaChartBar className="blue-icon" />
+              IICL Dashboard
+            </div>
+          </NavLink>
         </div>
 
         {/* COST ANALYSIS */}

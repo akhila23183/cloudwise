@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
@@ -14,54 +14,51 @@ import HomePage from "./components/HomePage";
 function AppWrapper() {
   const location = useLocation();
 
-  const hideLayout =
-    location.pathname === "/login" || location.pathname === "/register";
+  const isAuthPage =
+    location.pathname === "/" || location.pathname === "/register";
+
+  const isHomePage = location.pathname === "/homepage";
+
+  // AUTH PAGES (NO SIDEBAR / HEADER)
+  if (isAuthPage) {
+    return (
+      <Routes>
+        <Route path="/" element={<Login />} />
+
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    );
+  }
 
   return (
-    <>
-      {!hideLayout && (
-        <div style={{ display: "flex" }}>
-          {/* Sidebar */}
-          <Sidebar />
+    <div style={{ display: "flex", height: "100vh" }}>
+      {/* SIDEBAR ALWAYS */}
+      <Sidebar />
 
-          {/* Right side */}
-          <div style={{ flex: 1 }}>
-            {/* Header */}
-            <Header />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        {/* HEADER ONLY FOR NON-HOMEPAGE */}
+        {!isHomePage && <Header />}
 
-            {/* Pages */}
-            <div
-              style={{
-                padding: "20px",
-                background: "#f8fafc",
-                minHeight: "100vh",
-              }}
-            >
-              <Routes>
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/statcard" element={<StatCard />} />
-                <Route path="/optimization" element={<Optimization />} />
-                <Route path="/recommendations" element={<Recommendations />} />
-                <Route path="/homepage" element={<HomePage />} />
-              </Routes>
-            </div>
-          </div>
+        {/* PAGE CONTENT */}
+        <div
+          style={{
+            flex: 1,
+            padding: "0px",
+            background: "#f8fafc",
+            overflowY: "auto",
+          }}
+        >
+          <Routes>
+            <Route path="/homepage" element={<HomePage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/statcard" element={<StatCard />} />
+            <Route path="/optimization" element={<Optimization />} />
+            <Route path="/recommendations" element={<Recommendations />} />
+          </Routes>
         </div>
-      )}
-
-      {/* Without Header & Sidebar */}
-      {hideLayout && (
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      )}
-    </>
+      </div>
+    </div>
   );
 }
 
-function App() {
-  return <AppWrapper />;
-}
-
-export default App;
+export default AppWrapper;
