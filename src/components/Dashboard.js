@@ -21,8 +21,8 @@ import {
 } from "react-icons/fa";
 
 import * as XLSX from "xlsx";
-import jsPDF from "jspdf";
-import "jspdf-autotable";
+// import jsPDF from "jspdf";
+// import "jspdf-autotable";
 import "../assets/Dashboard.css";
 
 function Dashboard() {

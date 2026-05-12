@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
   const [form, setForm] = useState({
+    username: "",
     email: "",
     password: "",
     confirm_password: "",
@@ -32,6 +33,7 @@ const Register = () => {
     }
 
     const payload = {
+      username: form.username,
       email: form.email,
       password: form.password,
       confirm_password: form.confirm_password,
@@ -51,6 +53,7 @@ const Register = () => {
       alert(response.data.message || "Registration Successful");
 
       setForm({
+        username: "",
         email: "",
         password: "",
         confirm_password: "",
@@ -86,6 +89,18 @@ const Register = () => {
 
         {/* FORM */}
         <form className="register-form" onSubmit={submit}>
+          {/* Username */}
+          <div className="input-group">
+            <input
+              type="text"
+              name="username"
+              placeholder="Enter Your Username"
+              value={form.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
           {/* EMAIL */}
           <div className="input-group">
             <input
