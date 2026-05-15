@@ -39,7 +39,7 @@ function Sidebar() {
 
         {/* DASHBOARD */}
         <div className="menu-item">
-          <NavLink to="/homepage" style={{ textDecoration: "none" }}>
+          <NavLink to="/dashboardclient" style={{ textDecoration: "none" }}>
             <div className="menu-left">
               <FaChartBar className="blue-icon" />
               IICL Dashboard

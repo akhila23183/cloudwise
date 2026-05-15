@@ -11,8 +11,7 @@ import Optimization from "./components/Optimization";
 import Recommendations from "./components/Recommendations";
 import HomePage from "./components/HomePage";
 import ProtectedRoute from "./components/ProtectedRoute";
-// import Board from "./components/Board";
-// import CloudWise from "./Website/cloudwise";
+import DashboardClients from "./components/DashboardClients";
 
 function AppWrapper() {
   const location = useLocation();
@@ -62,7 +61,7 @@ function AppWrapper() {
                 </ProtectedRoute>
               }
             />
-            {/* <Route path="/board" element={<Board/>}/> */}
+            <Route path="/dashboardclient" element={<DashboardClients/>}/>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/statcard" element={<StatCard />} />
             <Route path="/optimization" element={<Optimization />} />
