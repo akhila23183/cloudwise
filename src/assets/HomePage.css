@@ -66,7 +66,7 @@
     color: #0f172a;
 }
 
-.logout-link {
+.logout-button {
     text-decoration: none;
     background: linear-gradient(135deg, #2563eb, #06b6d4);
     color: white;
@@ -76,7 +76,7 @@
     transition: 0.3s;
 }
 
-.logout-link:hover {
+.logout-button:hover {
     transform: translateY(-2px);
 }
 

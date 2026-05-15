@@ -10,12 +10,16 @@ import Register from "./pages/Register";
 import Optimization from "./components/Optimization";
 import Recommendations from "./components/Recommendations";
 import HomePage from "./components/HomePage";
+import ProtectedRoute from "./components/ProtectedRoute";
+// import Board from "./components/Board";
+// import CloudWise from "./Website/cloudwise";
 
 function AppWrapper() {
   const location = useLocation();
 
   const isAuthPage =
-    location.pathname === "/" || location.pathname === "/register";
+    location.pathname === "/" ||
+    location.pathname === "/register";
 
   const isHomePage = location.pathname === "/homepage";
 
@@ -23,6 +27,7 @@ function AppWrapper() {
   if (isAuthPage) {
     return (
       <Routes>
+
         <Route path="/" element={<Login />} />
 
         <Route path="/register" element={<Register />} />
@@ -49,7 +54,15 @@ function AppWrapper() {
           }}
         >
           <Routes>
-            <Route path="/homepage" element={<HomePage />} />
+            <Route
+              path="/homepage"
+              element={
+                <ProtectedRoute>
+                  <HomePage />
+                </ProtectedRoute>
+              }
+            />
+            {/* <Route path="/board" element={<Board/>}/> */}
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/statcard" element={<StatCard />} />
             <Route path="/optimization" element={<Optimization />} />
@@ -61,4 +74,4 @@ function AppWrapper() {
   );
 }
 
-export default AppWrapper;
+export default AppWrapper;  

@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
   const [form, setForm] = useState({
-    username: "",
     email: "",
     password: "",
     confirm_password: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [message, setMessage] = useState("");
 
   // HANDLE INPUT
   const handleChange = (e) => {
@@ -28,32 +28,26 @@ const Register = () => {
     e.preventDefault();
 
     if (form.password !== form.confirm_password) {
-      alert("Passwords do not match");
+      setMessage("Passwords do not match");
       return;
     }
 
     const payload = {
-      username: form.username,
       email: form.email,
       password: form.password,
       confirm_password: form.confirm_password,
     };
 
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/register/",
-        payload,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
+      const response = await axios.post("http://127.0.0.1:8000/api/register/", payload, {
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+      });
 
-      alert(response.data.message || "Registration Successful");
+      setMessage(response.data.message || "Registration Successful");
 
       setForm({
-        username: "",
         email: "",
         password: "",
         confirm_password: "",
@@ -63,11 +57,9 @@ const Register = () => {
 
       console.log(error.response?.data);
 
-      if (error.response) {
-        alert(JSON.stringify(error.response.data));
-      } else {
-        alert("Server not responding");
-      }
+      const errorMsg = error.response?.data?.error || error.response?.data?.message || "Registration Failed";
+
+      setMessage(errorMsg);
     }
   };
 
@@ -83,24 +75,10 @@ const Register = () => {
         {/* TITLE */}
         <h2 className="title">Create CloudWise Account</h2>
 
-        <p className="subtitle">
-          Manage and optimize your cloud infrastructure efficiently.
-        </p>
+        <p className="subtitle">Manage and optimize your cloud infrastructure efficiently.</p>
 
         {/* FORM */}
         <form className="register-form" onSubmit={submit}>
-          {/* Username */}
-          <div className="input-group">
-            <input
-              type="text"
-              name="username"
-              placeholder="Enter Your Username"
-              value={form.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
           {/* EMAIL */}
           <div className="input-group">
             <input
@@ -128,8 +106,6 @@ const Register = () => {
             </span>
           </div>
 
-         
-
           {/* CONFIRM PASSWORD */}
           <div className="input-group password-group">
             <input
@@ -141,7 +117,7 @@ const Register = () => {
               required
             />
             <span onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <FaEyeSlash/> : <FaEye/>}
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
 
@@ -150,9 +126,11 @@ const Register = () => {
             Create Account
           </button>
 
+          {message && <p className="message">{message}</p>}
+
           {/* LOGIN */}
           <p className="register-para">
-            Already have an account? <Link to="/login">Login Here</Link>
+            Already have an account? <Link to="/">Login Here</Link>
           </p>
         </form>
       </div>

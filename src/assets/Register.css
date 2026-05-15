@@ -128,3 +128,10 @@
     color: #38bdf8;
     text-decoration: none;
 }
+
+.message {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 500;
+  color: red;
+}

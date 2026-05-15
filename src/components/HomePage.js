@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/HomePage.css";
 import { FaUserCircle, FaCloud, FaBell } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   const email = localStorage.getItem("userEmail");
 
   const username = email
     ? email.split("@")[0].charAt(0).toUpperCase() + email.split("@")[0].slice(1)
     : "Guest";
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userEmail");
+
+    localStorage.clear();
+    navigate("/");
+  };
 
   return (
     <div className="home-page">
@@ -27,9 +38,9 @@ const HomePage = () => {
             <span>{username}</span>
           </div>
 
-          <Link to="/" className="logout-link">
+          <button className="logout-button" onClick={handleLogout}>
             Logout
-          </Link>
+          </button>
         </div>
       </div>
 
